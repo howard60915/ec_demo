@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AdminEcDemo</title>
+    <%= csrf_meta_tags %>
+    <!-- stylesheet link -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    '/bootstrap/css/bootstrap'%>
+    <%= stylesheet_link_tag    '/bootstrap/css/bootstrap.min'%>
+    <%= stylesheet_link_tag    '/bootstrap/css/sb-admin'%>
+    <!-- javascript link -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag '/bootstrap/js/bootstrap' %>
+    <%= javascript_include_tag '/bootstrap/js/bootstrap.min' %>
+    <%= javascript_include_tag '/bootstrap/js/jquery' %>
+  </head>
+
+  <body>
+     <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Admin Stage</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <%= current_user.email %><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <%#= link_to('修改密碼', edit_registration_path(:user)) %>
+                        </li>
+                        <li>
+                            <%#= link_to("Front End Interface", movies_path , :class => "btn btn-prinmary btn-sm")%> 
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <%#= link_to('登出', destroy_user_session_path, :method => :delete) %> 
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <!-- <li>
+                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li> -->
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#photos"><i class="fa fa-fw fa-arrows-v"></i> Movies <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="photos" class="collapse">
+                            <li>
+                                <%#= link_to("Movie List", admin_movies_path ) %>
+                            </li>
+                            <li>
+                                <%#= link_to("Movie pitures", pictures_admin_movies_path) %>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    </li>
+                    <li>
+                        <%#= link_to("Category", admin_categories_path ) %>
+                    </li>
+                    <li>
+                        <%#=  link_to("Users", admin_users_path)%>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Comments <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <%#=  link_to("Comments", admin_comments_path)%>
+                            </li>
+                            <li>
+                                <%#= link_to("Comments photos", photos_admin_comments_path) %>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+              <%= yield %>
+
+                <!-- Page Heading -->
+                <!-- <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Dashboard <small>Statistics Overview</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Dashboard
+                            </li>
+                        </ol>
+
+                    </div>
+                </div>
+                
+            </div> -->
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+
+   <!-- jQuery -->
+    <!-- <script src="js/jquery.js"></script> -->
+
+    <!-- Bootstrap Core JavaScript -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+
+    <!-- Morris Charts JavaScript -->
+    <!-- <script src="js/plugins/morris/raphael.min.js"></script>
+    <script src="js/plugins/morris/morris.min.js"></script>
+    <script src="js/plugins/morris/morris-data.js"></script> -->
+
+
+    
+  </body>
+</html>
