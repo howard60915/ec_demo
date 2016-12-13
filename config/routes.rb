@@ -5,6 +5,9 @@ Rails.application.routes.draw do
 
   root :to => "home#index"
 
+  resources :products
+  resources :categories
+
   namespace :admin do
     resources :categories
     resources :firms

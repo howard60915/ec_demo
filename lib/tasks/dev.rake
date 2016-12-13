@@ -23,7 +23,7 @@ namespace :dev do
           end
 
           #Products Data
-          Category.each do |category|
+          Category.all.each do |category|
             5.times do 
               category.products.create(
                 :name => Faker::Commerce.product_name, 
