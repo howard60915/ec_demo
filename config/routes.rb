@@ -21,6 +21,11 @@ Rails.application.routes.draw do
     end    
     resources :products
     resources :users
+    resources :users, :only => [:index, :update, :destroy] do 
+      collection do
+        post :bulk_update
+      end
+    end   
   end  
 
 end
