@@ -9,9 +9,12 @@ Rails.application.routes.draw do
   resources :categories
 
   namespace :admin do
-    resources :categories
-    resources :firms
     resources :categories, :only => [:index, :create, :update, :destroy] do 
+      collection do
+        post :bulk_update
+      end  
+    end    
+    resources :firms, :only => [:index, :create, :update, :destroy] do 
       collection do
         post :bulk_update
       end  

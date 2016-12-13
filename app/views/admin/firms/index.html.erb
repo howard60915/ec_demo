@@ -1,0 +1,52 @@
+<%= form_tag bulk_update_admin_firms_path do %>
+<table class="table">
+  <tr>
+    <th></th>
+    <th>name</th>
+    <th>Industry</th>
+    <th>Tel Number</th>
+    <th>Address</th>
+    <th></th>
+  </tr>
+  <% @firms.each do |firm| %>
+  <tbody>
+    <tr>
+      <td><%= check_box_tag "ids[]", firm.id, false %></td>
+      <td><%= firm.name %></td>
+      <td><%= firm.industry %></td>
+      <td><%= firm.tel %></td>
+      <td><%= firm.address %></td>
+      <td>
+        <%= link_to "Edit", admin_firms_path(:id => firm.id), :class => "btn btn-warning btn-sm" %>
+        <%= link_to "Delete", admin_firm_path(firm), :method => :delete, :class => "btn btn-danger btn-sm" %>
+      </td>
+    </tr>    
+  </tbody>
+  <% end %>
+</table>
+  <%#= submit_tag "Update", :class => "btn btn-success btn-sm" %>
+  <%= submit_tag "Delete", :class => "btn btn-danger btn-sm" %>
+<% end %>
+<br \>
+<%= form_for [:admin, @firm] do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Category Name" %>
+    <%= f.text_field :name , :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :tel, "Tel Number" %>
+    <%= f.text_field :tel %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :industry, "Indusrty" %>
+    <%= f.text_field :industry , :class => "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :address, "Address" %>
+    <%= f.text_field :address , :class => "form-control" %>
+  </div>
+  <%= f.submit "Save" , :class => "btn btn-success btn-sm" %>
+<% end %>  
