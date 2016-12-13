@@ -4,5 +4,5 @@ class Category < ApplicationRecord
 
   validates_presence_of :name
 
-   scope :enabled, ->{ where(enabled: true) }
+  scope :enabled, ->{ where(enabled: true) }
 end

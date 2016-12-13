@@ -1,0 +1,46 @@
+<%= form_tag bulk_update_admin_categories_path do %>
+<table class="table">
+  <tr>
+    <th></th>
+    <th>name</th>
+    <th>description</th>
+    <th>enabled</th>
+    <th></th>
+  </tr>
+  <% @categories.each do |category| %>
+  <tbody>
+    <tr>
+      <td><%= check_box_tag "ids[]", category.id, false %></td>
+      <td><%= category.name %></td>
+      <td><%= category.description %></td>
+      <td>
+        <%= category.enabled %>
+        <%#= select_tag :enabled, options_for_select([["True", "true"], ["False", "false"]]) , :class => "btn btn-default" %>  
+      </td>
+      <td>
+        <%= link_to "Edit", admin_categories_path(:id => category.id), :class => "btn btn-warning btn-sm" %>
+        <%= link_to "Delete", admin_category_path(category), :method => :delete, :class => "btn btn-danger btn-sm" %>
+      </td>
+    </tr>    
+  </tbody>
+  <% end %>
+</table>
+  <%#= submit_tag "Update", :class => "btn btn-success btn-sm" %>
+  <%= submit_tag "Delete", :class => "btn btn-danger btn-sm" %>
+<% end %>
+<br \>
+<%= form_for [:admin, @category] do |f| %>
+  <div class="form-group">
+    <%= f.label :name, "Category Name" %>
+    <%= f.text_field :name , :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, "Descrption" %>
+    <%= f.text_area :description , :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :enabled, "Status" %>
+    <%= f.select :enabled , [["Enabled", true],["Disable", false]] %>
+  </div>
+  <%= f.submit "Save" , :class => "btn btn-success btn-sm" %>
+<% end %>  
