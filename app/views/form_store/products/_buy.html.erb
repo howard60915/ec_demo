@@ -1,0 +1,12 @@
+<div class="col-sm-6">
+  <div class="product-detail">
+    <div class="brand"><%= product.firm.name %></div>
+    <h2 class="product-title"><%= product.name %></h2>
+    <div class="product-price"><%= number_to_currency product.price %></div>
+    <div class="product-content"><%= product.content %></div>
+    <div class="trans-fee">免運費</div>
+  </div>
+  <div class="cart-content">
+    <button class="btn btn-success" >add to Cart </button>
+  </div>
+</div>
