@@ -74,15 +74,18 @@
                         <%#=  link_to("Users", admin_users_path)%>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Firms <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Firms <i class="glyphicon glyphicon-briefcase"></i></a>
                         <ul id="demo" class="collapse">
                             <li>
-                                <%=  link_to("Frims", admin_firms_path)%>
-                            </li>
-                            <li>
-                                <%#= link_to("Comments photos", photos_admin_comments_path) %>
+                                <%=  link_to " Frims", admin_firms_path %>
                             </li>
                         </ul>
+                    </li>
+                    <li>
+                        <%= link_to " Users", admin_users_path, :class => "glyphicon glyphicon-user" %>
+                    </li>
+                    <li>
+                        <%= link_to " Products", admin_products_path, :class => "glyphicon glyphicon-menu-hamburger" %>
                     </li>
                 </ul>
             </div>

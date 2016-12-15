@@ -2,15 +2,14 @@
   <div class="col-sm-2">
     <ul class="nav nav-pill nav-stacked">
       <% @categories.each do |category| %>
-        <li><%= category.name %></li>
+        <li><%= link_to_if (category.products.size > 0), category.name, category_path(category) %></li>
       <% end %>
     </ul>
   </div>
   <div class="col-sm-10">
     <div class="row">
-      <% @products.each do |product| %>
-        <%= link_to product.name, product_path(product), :class => "btn btn-info" %>
-      <% end %>
+      <%= render :partial => "form_store/products/products", :collection => @products, :as => :product %>
     </div>
+    <%= paginate @products, :theme => "twitter-bootstrap-3" %>
   </div>
 </div>

@@ -1,0 +1,64 @@
+<%= form_tag bulk_update_admin_products_path do %>
+<table class="table">
+  <tr>
+    <th></th>
+    <th>name</th>
+    <th>content</th>
+    <th>price</th>
+    <th>On shelf</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @products.each do |product| %>
+  <tbody>
+    <tr>
+      <td><%= check_box_tag "ids[]", product.id, false %></td>
+      <td><%= product.name %></td>
+      <td><%= product.content %></td>
+      <td><%= product.price %></td>
+      <td>
+        <%= product.activated %>
+        <%#= select_tag :enabled, options_for_select([["True", "true"], ["False", "false"]]) , :class => "btn btn-default" %>  
+      </td>
+      <td><%= product.category.name %></td>
+      <td><%= product.firm.name %></td>
+      <td>
+        <%= link_to "Edit", admin_products_path(:id => product.id), :class => "btn btn-warning btn-sm" %>
+        <%= link_to "Delete", admin_product_path(product), :method => :delete, :class => "btn btn-danger btn-sm" %>
+      </td>
+    </tr>    
+  </tbody>
+  <% end %>
+</table>
+  <%= paginate @products, :theme => 'twitter-bootstrap-3', :pagination_class => "pagination-small pagination-centered" %>
+  <br \>
+  <%#= submit_tag "Update", :class => "btn btn-success btn-sm" %>
+  <%= submit_tag "Delete", :class => "btn btn-danger btn-sm" %>
+<% end %>
+<br \>
+<%= form_for [:admin, @product] do |f| %>
+  <div class="form-group">
+    <%= f.label :category_id, "Category" %>
+    <%= f.select :category_id , @categories %>
+    <%= f.label :firm_id, "Firm" %>
+    <%= f.select :firm_id , @firms %>
+  </div>
+  <div class="form-group">
+    <%= f.label :name, "Product Name" %>
+    <%= f.text_field :name , :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :content, "Content" %>
+    <%= f.text_area :content , :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :price, "Price" %>
+    <%= f.number_field :price , :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :activated, "Status" %>
+    <%= f.select :activated , [["On shelf", true],["off shelf", false]] %>
+  </div>
+  <%= f.submit "Save" , :class => "btn btn-success btn-sm" %>
+<% end %>  

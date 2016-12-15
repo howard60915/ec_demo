@@ -1,0 +1,38 @@
+<%= form_tag bulk_update_admin_users_path do %>
+<table class="table">
+  <tr>
+    <th></th>
+    <th>email</th>
+    <th>Admin</th>
+    <th></th>
+  </tr>
+  <% @users.each do |user| %>
+  <tbody>
+    <tr>
+      <td><%= check_box_tag "ids[]", user.id, false %></td>
+      <td><%= user.short_name %></td>
+      <td><%= user.admin %></td>
+      <td>
+        <%= link_to "Edit", admin_users_path(:id => user.id), :class => "btn btn-warning btn-sm" %>
+        <%= link_to "Delete", admin_user_path(user), :method => :delete, :class => "btn btn-danger btn-sm" %>
+      </td>
+    </tr>    
+  </tbody>
+  <% end %>
+</table>
+  <%#= submit_tag "Update", :class => "btn btn-success btn-sm" %>
+  <%= submit_tag "Delete", :class => "btn btn-danger btn-sm" %>
+<% end %>
+<br \>
+<%= form_for [:admin, @user] do |f| %>
+  <div class="form-group">
+    <%= f.label :email, "User Email" %>
+    <%= f.text_field :email , :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :admin, "Status" %>
+    <%= f.select :admin , [["Admin", true],["Normal", false]] %>
+  </div>
+  <%= f.submit "Save" , :class => "btn btn-success btn-sm" %>
+<% end %> 

@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   root :to => "home#index"
-
-  resources :products
-  resources :categories
+  resource :cart
+  resources :categories, :only => :show do 
+    resources :products, :controller => :category_products
+  end
 
   namespace :admin do
     resources :categories, :only => [:index, :create, :update, :destroy] do 
