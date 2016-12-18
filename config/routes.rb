@@ -20,8 +20,11 @@ Rails.application.routes.draw do
         post :bulk_update
       end  
     end    
-    resources :products
-    resources :users
+    resources :products, :only => [:index, :create, :update, :destroy] do 
+      collection do
+        post :bulk_update
+      end
+    end
     resources :users, :only => [:index, :update, :destroy] do 
       collection do
         post :bulk_update
