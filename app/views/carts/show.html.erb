@@ -1,4 +1,4 @@
-<% if @cart_item.empty? %>
+<% if @cart.empty? %>
   <h2>Your Cart is Empty</h2>
 <% else %>
   <table class="table cart-table">
@@ -9,20 +9,20 @@
       <th>subtotal</th>
     </tr>
     <tbody>
-    <% @cart_item.each do |cart_item| %>
+    <% @cart_item.each do |cart| %>
       <tr>
-        <td><%= cart_item.name %></td>
-        <td><%= number_to_currency cart_item..item.price %></td>
-        <td><%= cart_item.quantity %></td>
-        <td><%= number_to_currency cart_item.subtotal %></td>
-      </tr>
-    <% end %>  
+        <td><%= cart.item.name %></td>
+        <td><%= number_to_currency cart.item.price %></td>
+        <td><%= cart.quantity %></td>
+        <td><%= number_to_currency cart.subtotal %></td>
+      </tr> 
     </tbody>
+    <% end %> 
     <tfoot>
       <td>Total</td>
       <td></td>
       <td></td>
-      <td></td>
+      <td><%= number_to_currency @cart.total %></td>
     </tfoot>
   </table> 
 <% end %>  

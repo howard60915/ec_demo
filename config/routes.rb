@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root :to => "home#index"
   resource :cart
   resources :categories, :only => :show do 
-    resources :products, :controller => :category_products
+    resources :products, :controller => :category_products, only: :show do
+      post :add_item, on: :member
+    end
   end
 
   namespace :admin do

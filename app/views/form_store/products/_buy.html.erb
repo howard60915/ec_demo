@@ -7,6 +7,6 @@
     <div class="trans-fee">免運費</div>
   </div>
   <div class="cart-content">
-    <button class="btn btn-success" >add to Cart </button>
+    <div class="cart" ><%= link_to "Add to Cart", add_item_category_product_path(:category_id => product.category.id, :id => product.id), :method => :post, :class => "btn btn-success" %></div>
   </div>
 </div>
