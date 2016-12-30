@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   devise_for :users
 
   root :to => "home#index"
-  resource :cart
+  resource :cart, only: :show do
+    post :remove_item
+  end  
   resources :categories, :only => :show do 
     resources :products, :controller => :category_products, only: :show do
       post :add_item, on: :member

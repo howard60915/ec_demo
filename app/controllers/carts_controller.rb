@@ -4,7 +4,14 @@ class CartsController < ApplicationController
   def show
     @cart = find_cart
     @cart_item = @cart.cart_items.includes(:item)
+  end
 
+  def remove_item
+    @cart = find_cart
+    @cart_item = @cart.cart_items.find_by(params[:item_id])
+
+    @cart_item.destroy
+    redirect_to :back, alert: "#{@cart_item.item.name} has been removed"    
   end
 
 

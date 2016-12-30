@@ -53,7 +53,7 @@
   
     <div class="container">
       <%= content_tag :div, notice, class: 'alert alert-info' if notice %>
-      <%= content_tag :div, alert, class: 'alert alert-error' if alert %>
+      <%= content_tag :div, alert, class: 'alert alert-danger' if alert %>
       <%= yield %>  
     </div>
 

@@ -6,6 +6,7 @@
       <th>Products name</th>
       <th>price</th>
       <th>quantity</th>
+      <th></th>
       <th>subtotal</th>
     </tr>
     <tbody>
@@ -14,12 +15,14 @@
         <td><%= cart.item.name %></td>
         <td><%= number_to_currency cart.item.price %></td>
         <td><%= cart.quantity %></td>
+        <td><%= link_to "Remove", remove_item_cart_path(:item_id => cart.item.id), :method => :post, :class => "btn btn-danger btn-xs" %></td>
         <td><%= number_to_currency cart.subtotal %></td>
       </tr> 
     </tbody>
     <% end %> 
     <tfoot>
       <td>Total</td>
+      <td></td>
       <td></td>
       <td></td>
       <td><%= number_to_currency @cart.total %></td>
