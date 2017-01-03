@@ -1,0 +1,34 @@
+<h1 class="order-index">Your Orders</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Number #</th>
+      <th>Buyer</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Quantity</th>
+      <th>Total</th>
+      <th>Paid</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @orders.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.user.short_name %></td>
+      <td><%= order.email %></td>
+      <td><%= order.mobile %></td>
+      <td><%= order.order_items.size %></td>
+      <td><%= order.amount %></td>
+      <td>
+        <% if order.paid %>
+          <%= "Paid" %>
+        <% else %>
+          <%= "Unpaid" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>  
+  </tbody>
+</table>

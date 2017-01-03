@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :cart
+  has_many :orders, :dependent => :destroy
 
   def short_name
     self.email.split("@").first

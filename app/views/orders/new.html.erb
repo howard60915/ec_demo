@@ -1,0 +1,46 @@
+<h1>Order</h1>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_cart.cart_items.each do |cart_item| %>
+    <tr>
+      <td><%= cart_item.item.name %></td>
+      <td><%= cart_item.quantity %></td>
+      <td><%= number_to_currency cart_item.item.price %></td>
+      <td><%= cart_item.subtotal %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>Total</td>
+      <td></td>
+      <td></td>
+      <td><%= current_cart.total %></td>
+    </tr>
+  </tfoot>
+</table>
+
+<%= form_for @order do |f| %>
+
+  <%= f.label :name, "Name" %>
+  <%= f.text_field :name, :class => "form-control" %>
+
+  <%= f.label :email, "Email" %>
+  <%= f.text_field :email, :class => "form-control" %>
+
+  <%= f.label :mobile, "Mobile" %>
+  <%= f.text_field :mobile, :class => "form-control" %>
+  <br \>
+  <%= f.submit "Confirm", :class => "btn btn-success" %>
+  <%= link_to "Cancel", root_path, :class => "btn btn-danger" %>
+<% end %>
+  
