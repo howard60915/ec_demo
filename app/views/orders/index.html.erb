@@ -15,12 +15,12 @@
   <tbody>
   <% @orders.each do |order| %>
     <tr>
-      <td><%= order.id %></td>
-      <td><%= order.user.short_name %></td>
-      <td><%= order.email %></td>
-      <td><%= order.mobile %></td>
-      <td><%= order.order_items.size %></td>
-      <td><%= order.amount %></td>
+      <td><%= link_to order.id, order_path(order) %></td>
+      <td><%= link_to order.user.short_name, order_path(order) %></td>
+      <td><%= link_to order.email, order_path(order) %></td>
+      <td><%= link_to order.mobile %></td>
+      <td><%= link_to order.order_items.size, order_path(order) %></td>
+      <td><%= link_to order.amount, order_path(order) %></td>
       <td>
         <% if order.paid %>
           <%= "Paid" %>

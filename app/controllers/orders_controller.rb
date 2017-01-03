@@ -23,9 +23,21 @@ class OrdersController < ApplicationController
       redirect_to orders_path
     else
       render :new, alter: @order.errors.full_message if @order.errors
-    end  
+    end
+  end  
 
-  end
+  def checkout_pay2go
+    @order = current_user.orders.find(params[:id])
+
+    if @order.paid?
+      redirect_to :back, alert: 'The order was paid'
+    else
+      @payment = @order.payments.create!(payment_method: params[:payment_method])
+      render layout: false
+    end
+  end 
+
+
 
   private
 

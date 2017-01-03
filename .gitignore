@@ -25,5 +25,7 @@
 /config/database.yml
 /config/secrets.yml
 
+/cinfig/pay2go.yml
+
 /public/images
 /public/system/*

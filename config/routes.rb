@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   devise_for :users
 
   root :to => "home#index"
-  resources :orders
+  resources :orders do
+    post :checkout_pay2go, on: :member
+  end
+  post 'pay2go/return' => 'pay2go#return'
+  post 'pay2go/notify' => 'pay2go#notify'
+
   resource :cart, only: :show do
     post :remove_item
   end  
