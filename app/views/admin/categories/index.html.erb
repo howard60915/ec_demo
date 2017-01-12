@@ -8,21 +8,16 @@
     <th></th>
   </tr>
   <% @categories.each do |category| %>
-  <tbody>
     <tr>
-      <td><%= check_box_tag "ids[]", category.id, false %></td>
-      <td><%= category.name %></td>
-      <td><%= category.description %></td>
-      <td>
-        <%= category.enabled %>
-        <%#= select_tag :enabled, options_for_select([["True", "true"], ["False", "false"]]) , :class => "btn btn-default" %>  
-      </td>
-      <td>
-        <%= link_to "Edit", admin_categories_path(:id => category.id), :class => "btn btn-warning btn-sm" %>
-        <%= link_to "Delete", admin_category_path(category), :method => :delete, :class => "btn btn-danger btn-sm" %>
-      </td>
-    </tr>    
+      <%= render :partial => "list_form", :locals => { :list => category } %>
+    </tr>
+  <% category.children.each do |child| %>
+  <tbody class="panel-collapse collapse parent-<%= child.parent_id %> category-children">
+    <tr>
+      <%= render :partial => "list_form", :locals => { :list => child } %>
+    </tr>  
   </tbody>
+  <% end %>
   <% end %>
 </table>
   <%#= submit_tag "Update", :class => "btn btn-success btn-sm" %>
@@ -30,6 +25,11 @@
 <% end %>
 <br \>
 <%= form_for [:admin, @category] do |f| %>
+  <div class="form-group">
+    <%= f.label :parent_id, "Parent Category" %>
+    <%= f.select :parent_id , Category.root.all.collect{|category| [category.name, category.id] }, :include_blank => true %>
+  </div>
+
   <div class="form-group">
     <%= f.label :name, "Category Name" %>
     <%= f.text_field :name , :class => "form-control" %>
@@ -44,3 +44,4 @@
   </div>
   <%= f.submit "Save" , :class => "btn btn-success btn-sm" %>
 <% end %>  
+<script></script>

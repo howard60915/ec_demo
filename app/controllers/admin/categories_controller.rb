@@ -2,7 +2,7 @@ class Admin::CategoriesController < Admin::BaseController
   
 
   def index
-    @categories = Category.all
+    @categories = Category.root.all
 
     if params[:id]
       @category = Category.find(params[:id])
@@ -57,7 +57,7 @@ class Admin::CategoriesController < Admin::BaseController
   private
 
   def category_params
-    params.require(:category).permit(:name, :description, :enabled)
+    params.require(:category).permit(:name, :description, :enabled, :parent_id)
   end
 
 end
