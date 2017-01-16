@@ -1,6 +1,6 @@
 
 <td><%= check_box_tag "ids[]", list.id, false %></td>
-<td><a data-toggle="collapse" href=".parent-<%= list.id %>" ><%= list.name %></a></td>
+<td><a class="parent-<%= list.id %>" ><%= list.name %></a></td>
 <td><%= list.description %></td>
 <td>
   <%= list.enabled %>

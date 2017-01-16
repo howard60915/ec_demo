@@ -12,7 +12,7 @@
       <%= render :partial => "list_form", :locals => { :list => category } %>
     </tr>
   <% category.children.each do |child| %>
-  <tbody class="panel-collapse collapse parent-<%= child.parent_id %> category-children">
+  <tbody class="child-<%= child.parent_id %> category-children collapse out ">
     <tr>
       <%= render :partial => "list_form", :locals => { :list => child } %>
     </tr>  
@@ -44,4 +44,17 @@
   </div>
   <%= f.submit "Save" , :class => "btn btn-success btn-sm" %>
 <% end %>  
-<script></script>
+<script>
+<% @categories.each do |target|  %>
+  $(".parent-<%= target.id%>").click( function() {
+    if($(".child-<%= target.id %>").hasClass("out")) {
+        $(".child-<%= target.id %>").addClass("in");
+        $(".child-<%= target.id %>").removeClass("out");
+    } else {
+        $(".child-<%= target.id %>").addClass("out");
+        $(".child-<%= target.id %>").removeClass("in");
+      }
+    }
+  );
+<% end %>
+</script>
