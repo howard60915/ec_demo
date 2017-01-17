@@ -3,8 +3,8 @@
 <td><a class="parent-<%= list.id %>" ><%= list.name %></a></td>
 <td><%= list.description %></td>
 <td>
-  <%= list.enabled %>
-  <%#= select_tag :enabled, options_for_select([["True", "true"], ["False", "false"]]) , :class => "btn btn-default" %>  
+  <%= select_tag "enabled[]", options_for_select({"True" => "true", "False" => "false"}, list.enabled), :class => "btn btn-default" %>
+  <%= hidden_field_tag "enabled_ids[]", list.id %>
 </td>
 <td>
   <%= link_to "Edit", admin_categories_path(:id => list.id), :class => "btn btn-warning btn-sm" %>
