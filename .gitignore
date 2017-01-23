@@ -26,6 +26,7 @@
 /config/secrets.yml
 
 /cinfig/pay2go.yml
+/config/facebook.yml
 
 /public/images
 /public/system/*
