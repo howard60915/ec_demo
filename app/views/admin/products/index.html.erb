@@ -40,7 +40,7 @@
 <%= form_for [:admin, @product] do |f| %>
   <div class="form-group">
     <%= f.label :category_id, "Category" %>
-    <%= f.select :category_id , @categories %>
+    <%= f.select :category_id , Category.all.pluck("name") %>
     <%= f.label :firm_id, "Firm" %>
     <%= f.select :firm_id , @firms %>
   </div>

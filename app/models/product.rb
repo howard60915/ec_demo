@@ -11,4 +11,5 @@ class Product < ApplicationRecord
   validates_presence_of :name, :price
 
   scope :activated, ->{where(activated: true)}
+  scope :enabled, ->{where(categories: {enabled: true})}
 end
