@@ -21,19 +21,21 @@
           <a class="navbar-brand" href="/">AlphaSocial</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right login-interface">
             <li><%#= link_to '關於本站', about_path %></li>
             <li><%#= link_to '聯絡我們', contact_path %></li>
             <% if current_user %>
               <% if current_user.admin? %>
-                <li><%= link_to '購物車', cart_path %></li>
-                <li><%= link_to '我的訂單', orders_path %></li>
+                <li><%= link_to ' 購物車', cart_path, :class => "glyphicon glyphicon-shopping-cart" %></li>
+                <li><%= link_to ' 我的訂單', orders_path, :class => "glyphicon glyphicon-list-alt" %></li>
                 <li><%= link_to "Admin Zone", admin_categories_path %></li>
+                <li><%= link_to "", "/", :class => "glyphicon glyphicon-search search-scope", "data-turbolinks" => "false", :remote => true %></li>
                 <li><%= link_to '登出', destroy_user_session_path, method: :delete %></li>
                 <li><%= link_to('修改密碼', edit_registration_path(:user)) %></li>
               <% else %>
-                <li><%= link_to '購物車', cart_path %></li>
-                <li><%= link_to '我的訂單', orders_path %></li>
+                <li><%= link_to ' 購物車', cart_path, :class => "glyphicon glyphicon-shopping-cart" %></li>
+                <li><%= link_to ' 我的訂單', orders_path, :class => "glyphicon glyphicon-list-alt" %></li>
+                <li><%= link_to "", "/", :class => "glyphicon glyphicon-search search-scope", "data-turbolinks" => "false", :remote => true %></li>
                 <li><%= link_to '登出', destroy_user_session_path, method: :delete %></li>
                 <li><%= link_to('修改密碼', edit_registration_path(:user)) %></li>
               <% end %>  
@@ -43,6 +45,13 @@
               <li class="facebook-login"><%= link_to "Facebook log-in", user_facebook_omniauth_authorize_path %></li>
             <% end %>
           </ul>
+          <div class="search-wrapper hidden">
+
+            <%= form_tag home_index_path, :method => :get, :class => "nav navbar-form navbar-right" do %> 
+              <%= text_field_tag :search, nil, :placeholder => " Search Here" %>
+              <%= submit_tag "Search",:class => "btn btn-xs btn-default" %>
+            <% end %>
+          </div>  
         </div><!--/.nav-collapse -->
         <!-- <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
@@ -53,11 +62,29 @@
       </div>
     </nav>
   
-    <div class="container">
+    <div class="container product-container">
       <%= content_tag :div, notice, class: 'alert alert-info' if notice %>
       <%= content_tag :div, alert, class: 'alert alert-danger' if alert %>
       <%= yield %>  
     </div>
     <%= yield(:javascript) %>
+    <script>
+
+      $(".search-scope").click(
+        function() {
+         $(".login-interface").addClass("hidden");
+         $(".search-wrapper").removeClass("hidden");
+        }  
+      );
+      $(".product-container").click(
+        function() {
+          if($(".login-interface").hasClass("hidden")) {
+            $(".search-wrapper").addClass("hidden");
+            $(".login-interface").removeClass("hidden");
+          } 
+        }
+      );
+      
+    </script>
   </body>
 </html>

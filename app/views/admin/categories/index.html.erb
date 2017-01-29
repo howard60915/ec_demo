@@ -45,16 +45,16 @@
   <%= f.submit "Save" , :class => "btn btn-success btn-sm" %>
 <% end %>  
 <script>
-<% @categories.each do |target|  %>
-  $(".parent-<%= target.id%>").click( function() {
-    if($(".child-<%= target.id %>").hasClass("out")) {
-        $(".child-<%= target.id %>").addClass("in");
-        $(".child-<%= target.id %>").removeClass("out");
-    } else {
-        $(".child-<%= target.id %>").addClass("out");
-        $(".child-<%= target.id %>").removeClass("in");
+  <% @categories.each do |target|  %>
+    $(".parent-<%= target.id%>").click( function() {
+      if($(".child-<%= target.id %>").hasClass("out")) {
+          $(".child-<%= target.id %>").addClass("in");
+          $(".child-<%= target.id %>").removeClass("out");
+      } else {
+          $(".child-<%= target.id %>").addClass("out");
+          $(".child-<%= target.id %>").removeClass("in");
+        }
       }
-    }
-  );
-<% end %>
+    );
+  <% end %>
 </script>

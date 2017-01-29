@@ -2,6 +2,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// Admin category
 .table tr  {
    th {
     background-color: #99aaff;
@@ -14,4 +15,77 @@
   td {
   background-color: #88bb21;
   }
+}
+
+//root
+
+.facebook-login a {
+  top: 1px;
+  bottom: 5px;
+}
+
+.category-list li a {
+  font-family: PingFangTC-Regular, PingFang, sans-serif;
+  font-size: 15px;
+  font-weight: 50;
+  color: #999;
+}
+.category-list li a:hover {
+  color: #00c795;
+  text-decoration: none;
+}
+.product{
+  padding: 5px;
+}
+
+.product:hover .product-name {
+  color: #00c795;
+  text-decoration: none;
+}
+
+.article-container {
+  position: absolute;
+  padding: 20% 15px 30px 15px;
+}
+
+.content  {
+  color: #999;
+}
+
+.search-wrapper {
+  margin-top: 6px;
+}
+
+.search-wrapper input {
+  border-radius: 31px;
+  border: 1px solid #ccc;
+}
+
+//category_product
+
+.product-detail {
+  position: relative;
+  width: 500px;
+  margin: 5px;
+}
+
+.brand {
+  color: #888;
+  font-family: Courier New, Courier, monospace;
+}
+
+.product-title {
+  font-family: PT Serif, Times New Roman, Times, serif;
+  font-size: 50px;
+  color: #999;
+}
+
+.product-price {
+  font-size: 20px;
+  color: #555;
+}
+
+.product-content {
+  font-size: 30px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }

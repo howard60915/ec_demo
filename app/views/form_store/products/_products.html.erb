@@ -1,10 +1,14 @@
-<div class='col-sm-3 product'>
-  <div class='media'>
-    <%= image_tag Faker::Placeholdit.image("240x160", "png", 'e6e6e6'), class: 'pull-left' %>
-    <div class='media-body'>
-      <h2 class='product-name'><%= link_to product.name, category_product_path(:category_id => product.category, :id => product) %></h2>
-      <div class='product-content'><%= truncate product.content, length: 100 %></div>
-      <div class='product-price'><%= number_to_currency product.price %></div>
+<div class='col-sm-4 product'>
+  <a href="<%= category_product_path(:category_id => product.category, :id => product) %>">
+    <div class='image_container'>
+      <%= image_tag Faker::Placeholdit.image("270x180", "png", 'e6e6e6'), class: 'pull-left' %>
+      <div class='article-container menu'>
+        <div class="content">
+          <h2 class='product-name' ><%= truncate(product.name, length: 15) %></h2>
+          <div class='product-text'><%= truncate product.content, length: 100 %></div>
+          <div class='product-price'><%= number_to_currency product.price %></div>
+        </div>
+      </div>
     </div>
-  </div>
+  </a>
 </div>
