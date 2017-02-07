@@ -1,0 +1,11 @@
+<h2>About <%= title %></h2>
+<% if comments.empty? %>
+  <div class='alert alert-info'>目前沒有評論</div>
+<% end %>
+<% comments.each do |comment| %>
+  <div class='alert alert-info'>
+    <h5><%= comment.name %> <p><%= comment.user.email %></p></h5>
+    <%= simple_format comment.content %>
+    <p>commented at <%= comment.created_at.strftime("%Y/ %m/ %d") %></p>
+  </div>
+<% end %>

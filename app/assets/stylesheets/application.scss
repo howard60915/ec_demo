@@ -61,6 +61,17 @@
   border: 1px solid #ccc;
 }
 
+.page { 
+  position: relative;
+}
+
+.category-comment-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+
+
 //category_product
 
 .product-detail {
@@ -89,3 +100,5 @@
   font-size: 30px;
   font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
+
+

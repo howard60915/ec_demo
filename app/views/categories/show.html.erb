@@ -17,7 +17,20 @@
     <div class="row">
       <%= render :partial => "form_store/products/products", :collection => @products, :as => :product %>
     </div>
-    <%= paginate @products, :theme => "twitter-bootstrap-3" %>
+    <div class="page">
+      <%= paginate @products, :theme => "twitter-bootstrap-3" %> 
+      <button class="btn btn-default category-comment-button">Comment</button>
+    </div>
+  </div>
+</div>
+
+<div class="row category-comment-row hidden">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-4">
+    <%= render "form_store/comments/form", :url => category_comments_path(@category) if user_signed_in? %>
+  </div>
+  <div class="col-sm-6">
+    <%= render "form_store/comments/list", :comments => @category.comments, :title => @category.name %>
   </div>
 </div>
 
@@ -29,4 +42,15 @@
       }
     );
   <% end %>
+
+  $(".category-comment-button").click(
+    function() {
+      if($(".category-comment-row").hasClass("hidden")) {
+        $(".category-comment-row").removeClass("hidden");
+      } else{
+        $(".category-comment-row").addClass("hidden");
+      }
+    }  
+  );
+
 </script>

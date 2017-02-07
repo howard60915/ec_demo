@@ -16,3 +16,12 @@
     </div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <%= render 'form_store/comments/form', :url => category_product_comments_path(@product.category, @product) if user_signed_in? %>
+  </div>
+  <div class="col-sm-6">
+    <%= render 'form_store/comments/list', :comments => @product.comments, :title => @product.name %>
+  </div>
+</div>

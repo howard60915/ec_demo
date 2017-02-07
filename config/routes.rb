@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  devise_for :users
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   root :to => "home#index"
+  resources :home, :only => :index
   resources :orders do
     post :checkout_pay2go, on: :member
   end
@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   resources :categories, :only => :show do 
     resources :products, :controller => :category_products, only: :show do
       post :add_item, on: :member
+      resources :comments, :controller=> 'product_comments', :only => :create
     end
+    resources :comments, :controller=> 'product_comments', :only => :create
   end
 
   namespace :admin do
